@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Price Prediction | ML LSTM</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container py-5">
+        <header class="text-center mb-5">
+            <h1 class="display-5 fw-bold mb-2">Stock Price Prediction</h1>
+            <p class="text-muted">Powered by TensorFlow LSTM • Enter a symbol to predict next-day closing price</p>
+        </header>
+
+        <section class="card shadow-sm mb-4">
+            <div class="card-body p-4">
+                <h5 class="card-title mb-4">Predict</h5>
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-6">
+                        <label for="symbolInput" class="form-label">Stock Symbol</label>
+                        <input type="text" id="symbolInput" class="form-control form-control-lg" 
+                               placeholder="e.g. AAPL, GOOG, MSFT" value="AAPL" maxlength="10">
+                        <div class="form-text">Use valid ticker symbols (e.g., AAPL, GOOG, MSFT, AMZN)</div>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" id="predictBtn" class="btn btn-primary btn-lg w-100">
+                            <span class="btn-text">Predict Price</span>
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="resultSection" class="card shadow-sm mb-4 d-none">
+            <div class="card-body p-4">
+                <h5 class="card-title mb-4">Prediction Result</h5>
+                <div class="row g-4">
+                    <div class="col-md-4">
+                        <div class="result-box">
+                            <span class="result-label">Symbol</span>
+                            <span id="resultSymbol" class="result-value">—</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="result-box">
+                            <span class="result-label">Current Price</span>
+                            <span id="resultCurrent" class="result-value">—</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="result-box highlight">
+                            <span class="result-label">Predicted Price</span>
+                            <span id="resultPredicted" class="result-value">—</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-muted mt-3 mb-0 small">
+                    <span id="resultDateInfo">—</span>
+                </p>
+            </div>
+        </section>
+
+        <section id="chartSection" class="card shadow-sm mb-4 d-none">
+            <div class="card-body p-4">
+                <h5 class="card-title mb-4">Price Chart</h5>
+                <div class="chart-container">
+                    <canvas id="priceChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="errorSection" class="alert alert-danger d-none" role="alert"></section>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
