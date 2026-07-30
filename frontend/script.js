@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:5000";
+const API_BASE = "https://stock-price-predection-qd6a.onrender.com";
 
 const symbolInput = document.getElementById("symbolInput");
 const predictBtn = document.getElementById("predictBtn");
